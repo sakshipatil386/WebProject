@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiniShop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="mhead">
+        <div class="mshead">
+            <div class="brand" onclick="go('home')">mini<span>Shop</span></div>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <nav class="nav" id="navlinks">
+                <button onclick="go('home')">Home</button>
+                <button onclick="go('products')">Products</button>
+                <button onclick="go('contact')">Contacts</button>
+                <input id="search_tab1" placeholder="Seach Items" oninput="updateSearch()">
+                <select id="bysort1" onchange="Updatesort()">
+                    <option value="relevance">Sort</option>
+                    <option value="low">Low -> High</option>
+                    <option value="high">High -> Low</option>
+                </select>
+                <button class="cartbt" onclick="go('cart')">Cart</button>
+                <button onclick="toggledark()" class="darktoggle">🌙</button>
+            </nav>
+
+        </div>
+    </header>
+
+    <main id="msection">
+        <section id="home" class="page">
+            <section class="sec_main">
+                <div class="div_main">
+                    <h1>Gadgets that spark <span>joy</span></h1>
+                    <p>Curated tech for everyday life — audio, wearables, and accessories.</p>
+                    <div>
+                        <button class="shop_now" onclick="go('products')">Shop Now</button>
+                        
+                    </div>
+                </div>
+                <div>
+                    <img src="main_img.jpg" class="main_img" alt="Gadgets">
+                </div>
+                
+            </section>
+                <h2>Featured Products</h2>
+  <div id="featuredGrid" class="grid"></div>
+        </section>
+
+        <section id="products">
+            <h2>All Products</h2>
+            <div class="searchBox2">
+                <input id="search_tab2" placeholder="Seach Items" oninput="updateSearch(true)">
+                <select id="bysort2" onchange="Updatesort(true)">
+                    <option value="relevance">Sort</option>
+                    <option value="low">Low -> High</option>
+                    <option value="high">High -> Low</option>
+                </select>
+            </div>
+            <div id="productsGrid" class="grid"></div>
+        </section>
+
+        <section id="productdetails" class="hidden products">
+            <div id="prodDetail" class="detail"></div>
+            <h2>You might also like</h2>
+            <div id="recos" class="grid small-grid"></div>
+        </section>
+
+        
+        <section id="cart" class="page hidden">
+            <h2>🛒 Your Shopping Cart</h2>
+
+            <div class="cart-container">
+                <!-- Cart Items will render here -->
+                <div id="cartArea" class="cart-items"></div>
+
+                <!-- Cart Summary -->
+                <div class="cart-summary">
+                    <p id="total-price">Total: ₹0</p>
+                    <button id="clear-cart" onclick="clearCart()" class="clear-btn">🧹 Clear Cart</button>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <form class="contactForm" onsubmit="submitContact(event)" novalidate>
+                <div class="form-group">
+                    <label for="cname">Full Name</label>
+                    <input type="text" id="cname" placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cemail">Email</label>
+                    <input type="email" id="cemail" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="csubject">Subject</label>
+                    <input type="text" id="csubject" placeholder="Enter subject" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="caddress">Message</label>
+                    <textarea id="caddress" rows="5" placeholder="Write your message..." required></textarea>
+                </div>
+
+                <button class="btn_sub" type="submit">Sumbit</button>
+            </form>
+        </section>
+
+        <div id="formMessage"></div>
+
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <p>miniShop • Demo frontend only • Built for assignment</p>
+            <p>Free shipping over ₹1999</p>
+        </div>
+    </footer>
+
+    <template id="productCard">
+        <div class="card">
+            <div class="card-img">
+                <div class="card-body"></div>
+                <h4 class="card-title"></h4>
+                <p class="card-price"></p>
+                <div class="card-actions">
+                    <button class="btn-outline">View Details</button>
+                    <button class="btn add cart">Add Cart</button>
+                </div>
+            </div>
+        </div>
+    </template>
+    <script src="script.js"></script>
+</body>
+
+</html>
